@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Christmas Tree</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- 3D Canvas Container -->
+        <div id="canvas-container"></div>
+
+        <!-- HUD Layer -->
+        <div id="hud">
+            <div id="christmas-border"></div>
+            <div id="top-center">
+                <h1 class="christmas-title">🎄 量子圣诞树 🎄</h1>
+                <p class="subtitle">张开双手，见证奇迹</p>
+            </div>
+
+            <div id="top-right">
+                <div class="hud-item" id="status-mode">模式: 初始化中</div>
+                <div class="hud-item" id="status-gesture">手势: 无</div>
+                <div class="hud-item clickable" id="btn-mute">🔊</div>
+            </div>
+            <div id="bottom-right">
+                <button id="btn-settings" class="icon-btn">⚙️</button>
+            </div>
+            <div id="toast-container"></div>
+        </div>
+
+        <!-- Permissions Overlay -->
+        <div id="overlay-permission" class="overlay">
+            <div class="modal">
+                <h2>请求摄像头权限</h2>
+                <p>本体验需要使用摄像头识别手势。
+                    <br>所有视频流仅在本地处理，绝不会上传。
+                </p>
+                <div class="btn-group">
+                    <button id="btn-allow-cam">允许使用</button>
+                    <button id="btn-deny-cam" class="secondary">残忍拒绝</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Drawer -->
+        <div id="drawer-settings" class="drawer">
+            <div class="drawer-header">
+                <h3>设置</h3>
+                <button id="btn-close-settings">×</button>
+            </div>
+            <div class="drawer-content">
+                <div class="setting-item">
+                    <label>主题色</label>
+                    <select id="set-theme">
+                        <option value="aurora">极光 (Aurora)</option>
+                        <option value="neon">霓虹 (Neon)</option>
+                        <option value="gold">暖金 (Warm Gold)</option>
+                        <option value="snow">冰雪 (Snow)</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label>粒子数量</label>
+                    <input type="range" id="set-particles" min="1000" max="50000" step="1000">
+                </div>
+                <div class="setting-item">
+                    <label>亮度</label>
+                    <input type="range" id="set-brightness" min="0.1" max="2.0" step="0.1">
+                </div>
+                <div class="setting-item">
+                    <label>HUD 显示</label>
+                    <input type="checkbox" id="set-hud" checked>
+                </div>
+                <div class="setting-item">
+                    <label>照片展示</label>
+                    <input type="checkbox" id="set-photos" checked>
+                </div>
+                <div class="setting-item">
+                    <button id="btn-reset">恢复默认</button>
+                </div>
+            </div>
+            <div class="setting-item">
+                <button id="btn-reset">恢复默认</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Debug Console (for mobile troubleshooting) -->
+    <div id="debug-console" style="
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: rgba(0,0,0,0.8);
+            color: #0f0;
+            font-family: monospace;
+            font-size: 10px;
+            overflow-y: scroll;
+            z-index: 9999;
+            pointer-events: none;
+            padding: 5px;
+        "></div>
+
+    <!-- Scripts -->
+    <!-- Libraries -->
+    <script src="libs/three.min.js"></script>
+    <script src="libs/hands.js"></script>
+
+    <!-- Application Logic -->
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
